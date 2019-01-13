@@ -15,7 +15,7 @@ namespace ComponentExecuter
     class Program
     {
         static Rectangle _title = new Rectangle(19, 20, 264 - 19, 48 - 20),
-            _icon = new Rectangle(265, 19, 300 - 265, 48 - 20),
+            _icon = new Rectangle(269, 19, 299 - 269, 49 - 19),
             _level_type_iconType = new Rectangle(34, 35, 292 - 34, 72 - 53),
             _num = new Rectangle(231, 311, 302 - 231, 318 - 311),
             _effect = new Rectangle(22, 323, 283 - 22, 336 - 323),
@@ -56,7 +56,7 @@ namespace ComponentExecuter
             for (int i = 0; i < iconTypesDirList.Length; ++i)
             {
                 var tmpImg = Image.FromFile(iconTypesDirList[i].FullName);
-                var res = templateMatch.MatchRegion(ImageToBytes(cardImage), _icon, ImageToBytes(tmpImg), tmpImg.Width, tmpImg.Height, 0.8, false);
+                var res = templateMatch.MatchRegion(ImageToBytes(cardImage), _icon, ImageToBytes(tmpImg), tmpImg.Width, tmpImg.Height, 0.6, false);
                 if (res.Count > 0)
                 {
 
