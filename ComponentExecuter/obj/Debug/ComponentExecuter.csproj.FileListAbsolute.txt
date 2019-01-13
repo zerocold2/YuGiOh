@@ -1,0 +1,6 @@
+D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\ComponentExecuter.exe.config
+D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\ComponentExecuter.exe
+D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\ComponentExecuter.pdb
+D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\obj\Debug\ComponentExecuter.csprojResolveAssemblyReference.cache
+D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\obj\Debug\ComponentExecuter.exe
+D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\obj\Debug\ComponentExecuter.pdb
