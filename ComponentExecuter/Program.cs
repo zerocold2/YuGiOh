@@ -56,7 +56,6 @@ namespace ComponentExecuter
             for (int i = 0; i < iconTypesDirList.Length; ++i)
             {
                 var tmpImg = Image.FromFile(iconTypesDirList[i].FullName);
-                tmpImg.Save("tst.png");
                 var res = templateMatch.MatchRegion(ImageToBytes(cardImage), _icon, ImageToBytes(tmpImg), tmpImg.Width, tmpImg.Height, 0.8, false);
                 if (res.Count > 0)
                 {

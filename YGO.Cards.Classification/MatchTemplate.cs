@@ -74,8 +74,11 @@ namespace YGO.Cards.Classification
             if (srcWidth < tmpWidth || srcHeight < tmpHeight)
             {
                 source = source.Resize(tmpWidth, tmpHeight, Inter.Linear);
-                source.Save("tsdef.png");
+                //template = template.Resize(0.5, Inter.Linear);
+
+                source.Save("s.png");
             }
+            template.Save("t.png");
             b.Dispose(); b1.Dispose();
             Rectangle ret = new Rectangle();
 
