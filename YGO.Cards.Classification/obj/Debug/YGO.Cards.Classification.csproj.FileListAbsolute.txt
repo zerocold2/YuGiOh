@@ -1,5 +1,7 @@
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\YGO.Cards.Classification.dll
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\YGO.Cards.Classification.pdb
+D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Emgu.CV.World.dll
+D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Emgu.CV.World.xml
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\obj\Debug\YGO.Cards.Classification.csprojResolveAssemblyReference.cache
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\obj\Debug\YGO.Cards.Classification.dll
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\obj\Debug\YGO.Cards.Classification.pdb

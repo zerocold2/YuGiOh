@@ -1,5 +1,4 @@
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Domain.Entities\bin\Debug\YGO.Domain.Entities.dll
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Domain.Entities\bin\Debug\YGO.Domain.Entities.pdb
-D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Domain.Entities\obj\Debug\YGO.Domain.Entities.csprojResolveAssemblyReference.cache
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Domain.Entities\obj\Debug\YGO.Domain.Entities.dll
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Domain.Entities\obj\Debug\YGO.Domain.Entities.pdb
