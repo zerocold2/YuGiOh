@@ -19,7 +19,9 @@ namespace YGO.Cards.Classification
         public List<Rectangle> Match(byte[] sourceImage, int srcWidth, int srcHeight, byte[] templateImage, int tmpWidth, int tmpHeight, double threshold, bool enableGpu)
         {
             List<Rectangle> ret = new List<Rectangle>();
-            ret.Add(TemplateMatch(sourceImage, srcWidth, srcHeight, templateImage, tmpWidth, tmpHeight, threshold));
+            var templateMatch = TemplateMatch(sourceImage, srcWidth, srcHeight, templateImage, tmpWidth, tmpHeight, threshold);
+            if (templateMatch != null)
+                ret.Add(templateMatch.Value);
             return ret;
         }
 
@@ -28,7 +30,9 @@ namespace YGO.Cards.Classification
         {
             List<Rectangle> ret = new List<Rectangle>();
             var regionBytes = RegionOfInterest(sourceImage, ROI);
-            ret.Add(TemplateMatch(regionBytes, ROI.Width, ROI.Height, templateImage, tmpWidth, tmpHeight, threshold));
+            var tmatch = TemplateMatch(regionBytes, ROI.Width, ROI.Height, templateImage, tmpWidth, tmpHeight, threshold);
+            if (tmatch != null)
+                ret.Add(tmatch.Value);
             return ret;
         }
 
@@ -60,11 +64,19 @@ namespace YGO.Cards.Classification
                 return memoryStream.ToArray();
             }
         }
-        private Rectangle TemplateMatch(byte[] sourceImage, int srcWidth, int srcHeight, byte[] templateImage, int tmpWidth, int tmpHeight, double threshold)
+        private Rectangle? TemplateMatch(byte[] sourceImage, int srcWidth, int srcHeight, byte[] templateImage, int tmpWidth, int tmpHeight, double threshold)
         {
-
-            Image<Bgr, byte> source = new Image<Bgr, byte>(srcWidth, srcHeight) { Bytes = sourceImage }; // srcImage
-            Image<Bgr, byte> template = new Image<Bgr, byte>(tmpWidth, tmpHeight) { Bytes = templateImage }; // template
+            Bitmap b = new Bitmap(new MemoryStream(sourceImage));
+            Bitmap b1 = new Bitmap(new MemoryStream(templateImage));
+            Image<Bgr, byte> source = new Image<Bgr, byte>(b); // srcImage
+            Image<Bgr, byte> template = new Image<Bgr, byte>(b1); // template
+            //Resizing source image if it smaller than the template
+            if (srcWidth < tmpWidth || srcHeight < tmpHeight)
+            {
+                source = source.Resize(tmpWidth, tmpHeight, Inter.Linear);
+                source.Save("tsdef.png");
+            }
+            b.Dispose(); b1.Dispose();
             Rectangle ret = new Rectangle();
 
             using (Image<Gray, float> result = source.MatchTemplate(template, TemplateMatchingType.CcoeffNormed))
@@ -77,9 +89,10 @@ namespace YGO.Cards.Classification
                 if (maxValues[0] > threshold)
                 {
                     ret = new Rectangle(maxLocations[0], template.Size);
+                    return ret;
                 }
             }
-            return ret;
+            return null;
         }
     }
 }
