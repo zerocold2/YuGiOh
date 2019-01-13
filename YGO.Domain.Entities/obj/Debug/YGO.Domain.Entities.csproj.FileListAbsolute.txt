@@ -2,3 +2,9 @@ D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Domain.Entities\bin\D
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Domain.Entities\bin\Debug\YGO.Domain.Entities.pdb
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Domain.Entities\obj\Debug\YGO.Domain.Entities.dll
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Domain.Entities\obj\Debug\YGO.Domain.Entities.pdb
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Domain.Entities\bin\Debug\YGO.Domain.Entities.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Domain.Entities\bin\Debug\YGO.Domain.Entities.pdb
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Domain.Entities\obj\Debug\YGO.Domain.Entities.csprojAssemblyReference.cache
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Domain.Entities\obj\Debug\YGO.Domain.Entities.csproj.CoreCompileInputs.cache
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Domain.Entities\obj\Debug\YGO.Domain.Entities.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Domain.Entities\obj\Debug\YGO.Domain.Entities.pdb

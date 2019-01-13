@@ -55,6 +55,10 @@
       <Project>{98f54b24-d3bf-49b3-bb10-09ef6df52ce5}</Project>
       <Name>YGO.Cards.Classification</Name>
     </ProjectReference>
+    <ProjectReference Include="..\YGO.Domain.Entities\YGO.Domain.Entities.csproj">
+      <Project>{b51acf7c-04ec-4463-bd29-fd942d3319e4}</Project>
+      <Name>YGO.Domain.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
