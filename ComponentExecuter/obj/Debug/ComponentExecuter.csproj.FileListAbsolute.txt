@@ -10,3 +10,17 @@ D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\bin\Deb
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\YGO.Domain.Entities.pdb
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\Emgu.CV.World.xml
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\ComponentExecuter\obj\Debug\ComponentExecuter.csprojResolveAssemblyReference.cache
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\ComponentExecuter.exe.config
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\ComponentExecuter.exe
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\ComponentExecuter.pdb
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\YGO.Cards.Classification.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\YGO.Domain.Entities.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\Emgu.CV.World.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\YGO.Cards.Classification.pdb
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\YGO.Domain.Entities.pdb
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\bin\Debug\Emgu.CV.World.xml
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\obj\Debug\ComponentExecuter.csprojAssemblyReference.cache
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\obj\Debug\ComponentExecuter.csproj.CoreCompileInputs.cache
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\obj\Debug\ComponentExecuter.csproj.CopyComplete
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\obj\Debug\ComponentExecuter.exe
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\ComponentExecuter\obj\Debug\ComponentExecuter.pdb

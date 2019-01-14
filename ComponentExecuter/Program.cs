@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -33,12 +34,38 @@ namespace ComponentExecuter
 
 
 
-            var cardList = Cards(@"D:\Entertetment\YuGiOh\YuGi");
+            var cardList = Cards(@"D:\_ZC\JDownload\misc\YuGi");//D:\Entertetment\YuGiOh\YuGi
+            var monsterDir = @"D:\_ZC\JDownload\misc\YuGi\Monsters";
             for (int i = 0; i < cardList.Length; i++)
             {
                 Image img = Image.FromFile(cardList[i].FullName);
                 int width = img.Width, height = img.Height;
-                MonsterCards(img);
+                var ret = MonsterCards(img);
+                Console.WriteLine(i);
+                if (!string.IsNullOrEmpty(ret))
+                {
+                    switch (ret)
+                    {
+                        case "WATER":
+                            cardList[i].CopyTo($"{monsterDir}\\{ret}\\{cardList[i].Name}");
+                            break;
+                        case "DARK":
+                            cardList[i].CopyTo($"{monsterDir}\\{ret}\\{cardList[i].Name}");
+                            break;
+                        case "FIRE":
+                            cardList[i].CopyTo($"{monsterDir}\\{ret}\\{cardList[i].Name}");
+                            break;
+                        case "LIGHT":
+                            cardList[i].CopyTo($"{monsterDir}\\{ret}\\{cardList[i].Name}");
+                            break;
+                        case "WIND":
+                            cardList[i].CopyTo($"{monsterDir}\\{ret}\\{cardList[i].Name}");
+                            break;
+                        case "EARTH":
+                            cardList[i].CopyTo($"{monsterDir}\\{ret}\\{cardList[i].Name}");
+                            break;
+                    }
+                }
             }
 
         }
@@ -46,23 +73,27 @@ namespace ComponentExecuter
         static Card GetCardDetails(Image cardImage)
         {
             Card card = new Card();
-            
+
             return card;
         }
-        static bool MonsterCards(Image cardImage)
+        static Dictionary<string, int> dic = new Dictionary<string, int>();
+        static string MonsterCards(Image cardImage)
         {
-            var iconTypesDirectory = @"D:\Entertetment\YuGiOh\YuGi\Attributes\";
+            var iconTypesDirectory = @"D:\_ZC\JDownload\misc\YuGi\Attributes";
             var iconTypesDirList = Cards(iconTypesDirectory);
+
+
             for (int i = 0; i < iconTypesDirList.Length; ++i)
             {
                 var tmpImg = Image.FromFile(iconTypesDirList[i].FullName);
-                var res = templateMatch.MatchRegion(ImageToBytes(cardImage), _icon, ImageToBytes(tmpImg), tmpImg.Width, tmpImg.Height, 0.6, false);
+                var res = templateMatch.MatchRegion(ImageToBytes(cardImage), _icon, ImageToBytes(tmpImg), tmpImg.Width, tmpImg.Height, 0.5, false);
                 if (res.Count > 0)
                 {
-
+                    //Console.WriteLine(iconTypesDirList[i].Name);
+                    return iconTypesDirList[i].Name.Split('.')[0];
                 }
             }
-            return true;
+            return "";
         }
 
 

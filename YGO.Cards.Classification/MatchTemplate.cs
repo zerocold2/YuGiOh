@@ -29,7 +29,7 @@ namespace YGO.Cards.Classification
             int tmpHeight, double threshold, bool enableGpu)
         {
             List<Rectangle> ret = new List<Rectangle>();
-            var regionBytes = RegionOfInterest(sourceImage, ROI);
+            var regionBytes = EllipseOfInterest(sourceImage, ROI);
             var tmatch = TemplateMatch(regionBytes, ROI.Width, ROI.Height, templateImage, tmpWidth, tmpHeight, threshold);
             if (tmatch != null)
                 ret.Add(tmatch.Value);
@@ -56,6 +56,27 @@ namespace YGO.Cards.Classification
             }
         }
 
+        private byte[] EllipseOfInterest(byte[] srcImage, Rectangle regionOfInterest)
+        {
+            using (MemoryStream mem = new MemoryStream(srcImage))
+            {
+                Bitmap srcBitmap = new Bitmap(mem);
+                Bitmap croppedImage = new Bitmap(regionOfInterest.Width, regionOfInterest.Height, srcBitmap.PixelFormat);
+                using (croppedImage)
+                {
+                    using (Graphics croppingGr = Graphics.FromImage(croppedImage))
+                    {
+                        Brush tBrush = new TextureBrush(srcBitmap, new Rectangle(regionOfInterest.X, regionOfInterest.Y, regionOfInterest.Width, regionOfInterest.Height));
+
+                        croppingGr.FillEllipse(tBrush, new Rectangle(0, 0, regionOfInterest.Width, regionOfInterest.Height));
+                        tBrush.Dispose();
+                    }
+                    srcBitmap.Dispose();
+                    return BitmapToBytes(croppedImage);
+                }
+            }
+        }
+
         private byte[] BitmapToBytes(Bitmap srcBitmap)
         {
             using (MemoryStream memoryStream = new MemoryStream())
@@ -75,19 +96,16 @@ namespace YGO.Cards.Classification
             {
                 source = source.Resize(tmpWidth, tmpHeight, Inter.Linear);
                 //template = template.Resize(0.5, Inter.Linear);
-
-                source.Save("s.png");
+                //source.Save("s.png");
             }
-            template.Save("t.png");
+            //template.Save("t.png");
             b.Dispose(); b1.Dispose();
             Rectangle ret = new Rectangle();
-
             using (Image<Gray, float> result = source.MatchTemplate(template, TemplateMatchingType.CcoeffNormed))
             {
                 double[] minValues, maxValues;
                 Point[] minLocations, maxLocations;
                 result.MinMax(out minValues, out maxValues, out minLocations, out maxLocations);
-
                 // You can try different values of the threshold. I guess somewhere between 0.75 and 0.95 would be good.
                 if (maxValues[0] > threshold)
                 {

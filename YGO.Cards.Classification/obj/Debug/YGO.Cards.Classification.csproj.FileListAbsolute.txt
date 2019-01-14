@@ -20,3 +20,9 @@ D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\ZedGraph.dll
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.xml
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Emgu.CV.UI.xml
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Emgu.CV.DebuggerVisualizers.VS2015.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Emgu.CV.UI.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\ZedGraph.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.xml
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Emgu.CV.UI.xml
