@@ -1,5 +1,11 @@
 namespace YGO.Domain.Entities
 {
+    public enum RegionType
+    {
+        Undefined,
+        Rectangle,
+        Circle
+    }
     public class Card
     {
         public string Name { get; set; }

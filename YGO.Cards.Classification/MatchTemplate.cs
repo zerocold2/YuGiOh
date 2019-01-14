@@ -11,6 +11,7 @@ using Emgu.CV.Cuda;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Stitching;
 using Emgu.CV.Structure;
+using YGO.Domain.Entities;
 
 namespace YGO.Cards.Classification
 {
@@ -29,7 +30,34 @@ namespace YGO.Cards.Classification
             int tmpHeight, double threshold, bool enableGpu)
         {
             List<Rectangle> ret = new List<Rectangle>();
-            var regionBytes = EllipseOfInterest(sourceImage, ROI);
+            var regionBytes = RegionOfInterest(sourceImage, ROI);
+            var tmatch = TemplateMatch(regionBytes, ROI.Width, ROI.Height, templateImage, tmpWidth, tmpHeight, threshold);
+            if (tmatch != null)
+                ret.Add(tmatch.Value);
+            return ret;
+        }
+
+        public List<Rectangle> MatchRegion(byte[] sourceImage, Rectangle ROI, RegionType type, byte[] templateImage, int tmpWidth, int tmpHeight,
+            double threshold, bool enableGpu)
+        {
+            List<Rectangle> ret = new List<Rectangle>();
+
+            byte[] regionBytes = null;
+            switch (type)
+            {
+                case RegionType.Rectangle:
+                    regionBytes = RegionOfInterest(sourceImage, ROI);
+                    break;
+                case RegionType.Undefined:
+                    regionBytes = RegionOfInterest(sourceImage, ROI);
+                    break;
+                case RegionType.Circle:
+                    regionBytes = EllipseOfInterest(sourceImage, ROI);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+
             var tmatch = TemplateMatch(regionBytes, ROI.Width, ROI.Height, templateImage, tmpWidth, tmpHeight, threshold);
             if (tmatch != null)
                 ret.Add(tmatch.Value);
@@ -46,9 +74,7 @@ namespace YGO.Cards.Classification
                 {
                     using (Graphics croppingGr = Graphics.FromImage(croppedImage))
                     {
-                        croppingGr.DrawImage(srcBitmap,
-                            new Rectangle(0, 0, regionOfInterest.Width, regionOfInterest.Height), regionOfInterest,
-                            GraphicsUnit.Pixel);
+                        croppingGr.DrawImage(srcBitmap, new Rectangle(0, 0, regionOfInterest.Width, regionOfInterest.Height), regionOfInterest, GraphicsUnit.Pixel);
                     }
                     srcBitmap.Dispose();
                     return BitmapToBytes(croppedImage);
@@ -85,6 +111,7 @@ namespace YGO.Cards.Classification
                 return memoryStream.ToArray();
             }
         }
+
         private Rectangle? TemplateMatch(byte[] sourceImage, int srcWidth, int srcHeight, byte[] templateImage, int tmpWidth, int tmpHeight, double threshold)
         {
             Bitmap b = new Bitmap(new MemoryStream(sourceImage));
@@ -93,13 +120,9 @@ namespace YGO.Cards.Classification
             Image<Bgr, byte> template = new Image<Bgr, byte>(b1); // template
             //Resizing source image if it smaller than the template
             if (srcWidth < tmpWidth || srcHeight < tmpHeight)
-            {
                 source = source.Resize(tmpWidth, tmpHeight, Inter.Linear);
-                //template = template.Resize(0.5, Inter.Linear);
-                //source.Save("s.png");
-            }
-            //template.Save("t.png");
-            b.Dispose(); b1.Dispose();
+            
+            b.Dispose();b1.Dispose();
             Rectangle ret = new Rectangle();
             using (Image<Gray, float> result = source.MatchTemplate(template, TemplateMatchingType.CcoeffNormed))
             {

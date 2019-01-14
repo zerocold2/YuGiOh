@@ -30,16 +30,12 @@ namespace ComponentExecuter
         static void Main(string[] args)
         {
             templateMatch = new MatchTemplate();
-
-
-
-
+            
             var cardList = Cards(@"D:\_ZC\JDownload\misc\YuGi");//D:\Entertetment\YuGiOh\YuGi
             var monsterDir = @"D:\_ZC\JDownload\misc\YuGi\Monsters";
             for (int i = 0; i < cardList.Length; i++)
             {
                 Image img = Image.FromFile(cardList[i].FullName);
-                int width = img.Width, height = img.Height;
                 var ret = MonsterCards(img);
                 Console.WriteLine(i);
                 if (!string.IsNullOrEmpty(ret))
@@ -76,22 +72,17 @@ namespace ComponentExecuter
 
             return card;
         }
-        static Dictionary<string, int> dic = new Dictionary<string, int>();
+        
         static string MonsterCards(Image cardImage)
         {
             var iconTypesDirectory = @"D:\_ZC\JDownload\misc\YuGi\Attributes";
             var iconTypesDirList = Cards(iconTypesDirectory);
-
-
-            for (int i = 0; i < iconTypesDirList.Length; ++i)
+            for(int i = 0; i < iconTypesDirList.Length; ++i)
             {
                 var tmpImg = Image.FromFile(iconTypesDirList[i].FullName);
                 var res = templateMatch.MatchRegion(ImageToBytes(cardImage), _icon, ImageToBytes(tmpImg), tmpImg.Width, tmpImg.Height, 0.5, false);
                 if (res.Count > 0)
-                {
-                    //Console.WriteLine(iconTypesDirList[i].Name);
                     return iconTypesDirList[i].Name.Split('.')[0];
-                }
             }
             return "";
         }
