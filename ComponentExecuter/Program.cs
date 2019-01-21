@@ -36,6 +36,7 @@ namespace ComponentExecuter
             for (int i = 0; i < cardList.Length; i++)
             {
                 Image img = Image.FromFile(cardList[i].FullName);
+                var text = ocr(img);
                 var ret = MonsterCards(img);
                 Console.WriteLine(i);
                 if (!string.IsNullOrEmpty(ret))
@@ -66,11 +67,10 @@ namespace ComponentExecuter
 
         }
 
-        static Card GetCardDetails(Image cardImage)
+        static string ocr(Image cardImage)
         {
-            Card card = new Card();
-
-            return card;
+            TesseractTextRecognition tesseract=new TesseractTextRecognition();
+            return tesseract.Recognize(ImageToBytes(cardImage));
         }
         
         static string MonsterCards(Image cardImage)

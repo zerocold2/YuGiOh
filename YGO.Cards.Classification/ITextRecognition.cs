@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -34,33 +35,39 @@ namespace YGO.Cards.Classification
     }
     public class TesseractTextRecognition : ITextRecognition
     {
+        private Mat _imageMat;
         public string Recognize(byte[] srcImage)
         {
-            Tesseract ocr=new Tesseract();
-            var mat=new Mat();
-            
-            return OcrImage(ocr,new Mat(), )
+            Tesseract ocr = new Tesseract();
+            Mat outImage = new Mat();
+            return OcrImage(ocr, ConvertToMat(srcImage), OCRMode.FullPage, outImage);
         }
 
+        private Mat ConvertToMat(byte[] imageData)
+        {
+            Bitmap bitmap=new Bitmap(new MemoryStream(imageData));
+            Image<Gray, byte> depthImage = new Image<Gray, byte>(bitmap);
+            bitmap.Dispose();
+            return depthImage.Mat;
+        }
         public string Recongnize(byte[] srcImage, Rectangle ROI)
         {
             throw new NotImplementedException();
         }
-
-        private String OcrImage(Tesseract ocr, Mat image, OCRMode mode, Mat imageColor)
+        private string OcrImage(Tesseract ocr, Mat image, OCRMode mode, Mat imageColor)
         {
             Bgr drawCharColor = new Bgr(Color.Red);
-
+            
             if (image.NumberOfChannels == 1)
                 CvInvoke.CvtColor(image, imageColor, ColorConversion.Gray2Bgr);
             else
                 image.CopyTo(imageColor);
-            
+
             if (mode == OCRMode.FullPage)
             {
-
+                ocr.Init("","eng",OcrEngineMode.TesseractLstmCombined);
                 ocr.SetImage(imageColor);
-
+                
                 if (ocr.Recognize() != 0)
                     throw new Exception("Failed to recognizer image");
                 Tesseract.Character[] characters = ocr.GetCharacters();
@@ -92,11 +99,8 @@ namespace YGO.Cards.Classification
             else
             {
                 bool checkInvert = true;
-
                 Rectangle[] regions;
-
-                using (
-                   ERFilterNM1 er1 = new ERFilterNM1("trained_classifierNM1.xml", 8, 0.00025f, 0.13f, 0.4f, true, 0.1f))
+                using (ERFilterNM1 er1 = new ERFilterNM1("trained_classifierNM1.xml", 8, 0.00025f, 0.13f, 0.4f, true, 0.1f))
                 using (ERFilterNM2 er2 = new ERFilterNM2("trained_classifierNM2.xml", 0.3f))
                 {
                     int channelCount = image.NumberOfChannels;
@@ -156,8 +160,7 @@ namespace YGO.Cards.Classification
                     }
 
                 }
-
-
+                
                 List<Tesseract.Character> allChars = new List<Tesseract.Character>();
                 String allText = String.Empty;
                 foreach (Rectangle rect in regions)
@@ -195,7 +198,6 @@ namespace YGO.Cards.Classification
                 }
 
                 return allText;
-
             }
 
         }

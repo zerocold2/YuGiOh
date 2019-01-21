@@ -28,3 +28,5 @@ D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\D
 D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\Emgu.CV.UI.xml
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\YGO.Domain.Entities.dll
 D:\_ZCLAB\_WorkingDirectory\C#\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\YGO.Domain.Entities.pdb
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\YGO.Domain.Entities.dll
+D:\_ZC\_Working Directory\Image Processing\YuGiOh\YGO.Cards.Classification\bin\Debug\YGO.Domain.Entities.pdb
