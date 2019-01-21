@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentExecuter", "ComponentExecuter\ComponentExecuter.csproj", "{50C27062-E701-40F2-8C91-BFD2F6249554}"
 EndProject
@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SDK", "SDK", "{7DFCC763-6CB
 		C:\Emgu\emgucv-windesktop 3.3.0.2824\bin\ZedGraph.license.txt = C:\Emgu\emgucv-windesktop 3.3.0.2824\bin\ZedGraph.license.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tessdata", "tessdata", "{9FFF1D8A-85D8-4060-A32A-BEFDFA920807}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,5 +58,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{98F54B24-D3BF-49B3-BB10-09EF6DF52CE5} = {E3ECF2D5-5D61-4E34-8326-5ED1D4548CEA}
 		{B51ACF7C-04EC-4463-BD29-FD942D3319E4} = {22E330DE-0FDB-4CB6-A87E-B2DA3019AA77}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85043867-CB1A-415D-BA8E-03BC02277888}
 	EndGlobalSection
 EndGlobal

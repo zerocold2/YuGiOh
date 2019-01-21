@@ -39,6 +39,7 @@ namespace YGO.Cards.Classification
         public string Recognize(byte[] srcImage)
         {
             Tesseract ocr = new Tesseract();
+            ocr.Init(@"D:\_ZC\_Working Directory\Image Processing\YuGiOh\tessdata\", "eng", OcrEngineMode.TesseractOnly);
             Mat outImage = new Mat();
             return OcrImage(ocr, ConvertToMat(srcImage), OCRMode.FullPage, outImage);
         }
@@ -65,7 +66,7 @@ namespace YGO.Cards.Classification
 
             if (mode == OCRMode.FullPage)
             {
-                ocr.Init("","eng",OcrEngineMode.TesseractLstmCombined);
+                
                 ocr.SetImage(imageColor);
                 
                 if (ocr.Recognize() != 0)
